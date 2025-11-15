@@ -62,7 +62,11 @@ class _MarketWatchScreenState extends State<MarketWatchScreen> {
                 label: Text('10'),
                 child: Icon(Icons.notifications_none_outlined),
               ),
-              onPressed: () {},
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Notifications Clicked')),
+                );
+              },
             ),
             const SizedBox(width: 8),
           ],
@@ -196,7 +200,9 @@ class MarketList extends StatelessWidget {
                 Row(
                   children: [
                     OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        print('SELL: ${data.symbol}');
+                      },
                       style: OutlinedButton.styleFrom(
                         side: BorderSide(color: Colors.red.shade300),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -210,7 +216,9 @@ class MarketList extends StatelessWidget {
                     ),
                     const SizedBox(width: 8),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        print('BUY: ${data.symbol}');
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green.shade600,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
