@@ -11,19 +11,16 @@ part of 'market_data_model.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
-
 /// @nodoc
 mixin _$MarketDataModel {
 
-@JsonKey(name: 'symbol') String get symbol;@JsonKey(name: 'buyPrice') double get price;@JsonKey(name: 'change') double get change;@JsonKey(name: 'isUp') bool get isPositiveChange;@JsonKey(name: 'sellPrice') double get ltp;@JsonKey(name: 'pl') double get pl;
+ String get symbol; double get price; double get change; bool get isPositiveChange; double get ltp; double get pl;
 /// Create a copy of MarketDataModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $MarketDataModelCopyWith<MarketDataModel> get copyWith => _$MarketDataModelCopyWithImpl<MarketDataModel>(this as MarketDataModel, _$identity);
 
-  /// Serializes this MarketDataModel to a JSON map.
-  Map<String, dynamic> toJson();
 
 
 @override
@@ -31,7 +28,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is MarketDataModel&&(identical(other.symbol, symbol) || other.symbol == symbol)&&(identical(other.price, price) || other.price == price)&&(identical(other.change, change) || other.change == change)&&(identical(other.isPositiveChange, isPositiveChange) || other.isPositiveChange == isPositiveChange)&&(identical(other.ltp, ltp) || other.ltp == ltp)&&(identical(other.pl, pl) || other.pl == pl));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,symbol,price,change,isPositiveChange,ltp,pl);
 
@@ -48,7 +45,7 @@ abstract mixin class $MarketDataModelCopyWith<$Res>  {
   factory $MarketDataModelCopyWith(MarketDataModel value, $Res Function(MarketDataModel) _then) = _$MarketDataModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'symbol') String symbol,@JsonKey(name: 'buyPrice') double price,@JsonKey(name: 'change') double change,@JsonKey(name: 'isUp') bool isPositiveChange,@JsonKey(name: 'sellPrice') double ltp,@JsonKey(name: 'pl') double pl
+ String symbol, double price, double change, bool isPositiveChange, double ltp, double pl
 });
 
 
@@ -158,7 +155,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'symbol')  String symbol, @JsonKey(name: 'buyPrice')  double price, @JsonKey(name: 'change')  double change, @JsonKey(name: 'isUp')  bool isPositiveChange, @JsonKey(name: 'sellPrice')  double ltp, @JsonKey(name: 'pl')  double pl)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String symbol,  double price,  double change,  bool isPositiveChange,  double ltp,  double pl)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MarketDataModel() when $default != null:
 return $default(_that.symbol,_that.price,_that.change,_that.isPositiveChange,_that.ltp,_that.pl);case _:
@@ -179,7 +176,7 @@ return $default(_that.symbol,_that.price,_that.change,_that.isPositiveChange,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'symbol')  String symbol, @JsonKey(name: 'buyPrice')  double price, @JsonKey(name: 'change')  double change, @JsonKey(name: 'isUp')  bool isPositiveChange, @JsonKey(name: 'sellPrice')  double ltp, @JsonKey(name: 'pl')  double pl)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String symbol,  double price,  double change,  bool isPositiveChange,  double ltp,  double pl)  $default,) {final _that = this;
 switch (_that) {
 case _MarketDataModel():
 return $default(_that.symbol,_that.price,_that.change,_that.isPositiveChange,_that.ltp,_that.pl);case _:
@@ -199,7 +196,7 @@ return $default(_that.symbol,_that.price,_that.change,_that.isPositiveChange,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'symbol')  String symbol, @JsonKey(name: 'buyPrice')  double price, @JsonKey(name: 'change')  double change, @JsonKey(name: 'isUp')  bool isPositiveChange, @JsonKey(name: 'sellPrice')  double ltp, @JsonKey(name: 'pl')  double pl)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String symbol,  double price,  double change,  bool isPositiveChange,  double ltp,  double pl)?  $default,) {final _that = this;
 switch (_that) {
 case _MarketDataModel() when $default != null:
 return $default(_that.symbol,_that.price,_that.change,_that.isPositiveChange,_that.ltp,_that.pl);case _:
@@ -212,17 +209,17 @@ return $default(_that.symbol,_that.price,_that.change,_that.isPositiveChange,_th
 
 /// @nodoc
 
-@JsonSerializable(explicitToJson: true)
-class _MarketDataModel implements MarketDataModel {
-  const _MarketDataModel({@JsonKey(name: 'symbol') required this.symbol, @JsonKey(name: 'buyPrice') required this.price, @JsonKey(name: 'change') required this.change, @JsonKey(name: 'isUp') required this.isPositiveChange, @JsonKey(name: 'sellPrice') required this.ltp, @JsonKey(name: 'pl') required this.pl});
-  factory _MarketDataModel.fromJson(Map<String, dynamic> json) => _$MarketDataModelFromJson(json);
 
-@override@JsonKey(name: 'symbol') final  String symbol;
-@override@JsonKey(name: 'buyPrice') final  double price;
-@override@JsonKey(name: 'change') final  double change;
-@override@JsonKey(name: 'isUp') final  bool isPositiveChange;
-@override@JsonKey(name: 'sellPrice') final  double ltp;
-@override@JsonKey(name: 'pl') final  double pl;
+class _MarketDataModel implements MarketDataModel {
+  const _MarketDataModel({required this.symbol, required this.price, required this.change, required this.isPositiveChange, required this.ltp, required this.pl});
+  
+
+@override final  String symbol;
+@override final  double price;
+@override final  double change;
+@override final  bool isPositiveChange;
+@override final  double ltp;
+@override final  double pl;
 
 /// Create a copy of MarketDataModel
 /// with the given fields replaced by the non-null parameter values.
@@ -230,17 +227,14 @@ class _MarketDataModel implements MarketDataModel {
 @pragma('vm:prefer-inline')
 _$MarketDataModelCopyWith<_MarketDataModel> get copyWith => __$MarketDataModelCopyWithImpl<_MarketDataModel>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$MarketDataModelToJson(this, );
-}
+
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _MarketDataModel&&(identical(other.symbol, symbol) || other.symbol == symbol)&&(identical(other.price, price) || other.price == price)&&(identical(other.change, change) || other.change == change)&&(identical(other.isPositiveChange, isPositiveChange) || other.isPositiveChange == isPositiveChange)&&(identical(other.ltp, ltp) || other.ltp == ltp)&&(identical(other.pl, pl) || other.pl == pl));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,symbol,price,change,isPositiveChange,ltp,pl);
 
@@ -257,7 +251,7 @@ abstract mixin class _$MarketDataModelCopyWith<$Res> implements $MarketDataModel
   factory _$MarketDataModelCopyWith(_MarketDataModel value, $Res Function(_MarketDataModel) _then) = __$MarketDataModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'symbol') String symbol,@JsonKey(name: 'buyPrice') double price,@JsonKey(name: 'change') double change,@JsonKey(name: 'isUp') bool isPositiveChange,@JsonKey(name: 'sellPrice') double ltp,@JsonKey(name: 'pl') double pl
+ String symbol, double price, double change, bool isPositiveChange, double ltp, double pl
 });
 
 
