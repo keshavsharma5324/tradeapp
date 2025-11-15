@@ -1,0 +1,183 @@
+
+[
+  {
+    "symbol": "AAPL",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": 2.5,
+    "sellPrice": 172.25,
+    "buyPrice": 172.50,
+    "isUp": true
+  },
+  {
+    "symbol": "GOOGL",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": -12.3,
+    "sellPrice": 2835.47,
+    "buyPrice": 2840.00,
+    "isUp": false
+  },
+  {
+    "symbol": "MSFT",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": 1.75,
+    "sellPrice": 304.83,
+    "buyPrice": 305.00,
+    "isUp": true
+  },
+  {
+    "symbol": "AMZN",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": -25.1,
+    "sellPrice": 3304.22,
+    "buyPrice": 3310.00,
+    "isUp": false
+  },
+  {
+    "symbol": "TSLA",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": 15.8,
+    "sellPrice": 922.43,
+    "buyPrice": 925.00,
+    "isUp": true
+  },
+  {
+    "symbol": "NVDA",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": 8.2,
+    "sellPrice": 280.50,
+    "buyPrice": 281.00,
+    "isUp": true
+  },
+  {
+    "symbol": "META",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": -5.6,
+    "sellPrice": 340.10,
+    "buyPrice": 341.00,
+    "isUp": false
+  },
+  {
+    "symbol": "BABA",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": 3.1,
+    "sellPrice": 120.75,
+    "buyPrice": 121.00,
+    "isUp": true
+  },
+  {
+    "symbol": "NFLX",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": -10.2,
+    "sellPrice": 405.60,
+    "buyPrice": 406.00,
+    "isUp": false
+  },
+  {
+    "symbol": "PYPL",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": 1.9,
+    "sellPrice": 180.20,
+    "buyPrice": 180.50,
+    "isUp": true
+  },
+  {
+    "symbol": "ORCL",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": -0.8,
+    "sellPrice": 85.40,
+    "buyPrice": 85.50,
+    "isUp": false
+  },
+  {
+    "symbol": "CRM",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": 2.1,
+    "sellPrice": 250.90,
+    "buyPrice": 251.50,
+    "isUp": true
+  },
+  {
+    "symbol": "ADBE",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": -4.5,
+    "sellPrice": 550.30,
+    "buyPrice": 551.00,
+    "isUp": false
+  },
+  {
+    "symbol": "INTC",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": 0.5,
+    "sellPrice": 52.80,
+    "buyPrice": 53.00,
+    "isUp": true
+  },
+  {
+    "symbol": "CSCO",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": -0.2,
+    "sellPrice": 60.10,
+    "buyPrice": 60.20,
+    "isUp": false
+  },
+  {
+    "symbol": "PEP",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": 1.2,
+    "sellPrice": 170.40,
+    "buyPrice": 170.60,
+    "isUp": true
+  },
+  {
+    "symbol": "KO",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": 0.8,
+    "sellPrice": 58.90,
+    "buyPrice": 59.00,
+    "isUp": true
+  },
+  {
+    "symbol": "MCD",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": -0.5,
+    "sellPrice": 250.10,
+    "buyPrice": 250.30,
+    "isUp": false
+  },
+  {
+    "symbol": "DIS",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": 1.5,
+    "sellPrice": 150.70,
+    "buyPrice": 151.00,
+    "isUp": true
+  },
+  {
+    "symbol": "NKE",
+    "expiry": "2024-12-31",
+    "date": "2024-01-01",
+    "change": 2.3,
+    "sellPrice": 165.80,
+    "buyPrice": 166.00,
+    "isUp": true
+  }
+]

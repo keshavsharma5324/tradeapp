@@ -1,0 +1,57 @@
+
+[
+  {
+    "symbol": "AXIS",
+    "expiry": "JULY 25",
+    "date": "31-07-2025",
+    "change": -3.95,
+    "sellPrice": 3426.03,
+    "buyPrice": 3428.03,
+    "isUp": false
+  },
+  {
+    "symbol": "HDFC",
+    "expiry": "JULY 25",
+    "date": "31-07-2025",
+    "change": -3.95,
+    "sellPrice": 3426.03,
+    "buyPrice": 3428.03,
+    "isUp": false
+  },
+  {
+    "symbol": "HDFC",
+    "expiry": "JULY 25",
+    "date": "31-07-2025",
+    "change": -3.95,
+    "sellPrice": 3426.03,
+    "buyPrice": 3428.03,
+    "isUp": true
+  },
+  {
+    "symbol": "HDFC",
+    "expiry": "JULY 25",
+    "date": "31-07-2025",
+    "change": -3.95,
+    "sellPrice": 3426.03,
+    "buyPrice": 3428.03,
+    "isUp": false
+  },
+  {
+    "symbol": "HDFC",
+    "expiry": "JULY 25",
+    "date": "31-07-2025",
+    "change": -3.95,
+    "sellPrice": 3426.03,
+    "buyPrice": 3428.03,
+    "isUp": true
+  },
+  {
+    "symbol": "HDFC",
+    "expiry": "JULY 25",
+    "date": "31-07-2025",
+    "change": -3.95,
+    "sellPrice": 3426.03,
+    "buyPrice": 3428.03,
+    "isUp": false
+  }
+]
