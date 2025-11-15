@@ -42,8 +42,8 @@ class _MarketWatchScreenState extends State<MarketWatchScreen> {
                 color: Colors.deepPurple.shade100.withOpacity(0.5),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Row(
-                children: const [
+              child: const Row(
+                children: [
                   Icon(Icons.account_balance_wallet, color: Colors.deepPurple),
                   SizedBox(width: 8),
                   Text(
@@ -58,17 +58,21 @@ class _MarketWatchScreenState extends State<MarketWatchScreen> {
             ),
             const SizedBox(width: 8),
             IconButton(
-              icon: Badge(
-                label: const Text('10'),
-                child: const Icon(Icons.notifications_none_outlined),
+              icon: const Badge(
+                label: Text('10'),
+                child: Icon(Icons.notifications_none_outlined),
               ),
-              onPressed: () {},
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Notifications Clicked')),
+                );
+              },
             ),
             const SizedBox(width: 8),
           ],
-          bottom: TabBar(
+          bottom: const TabBar(
             isScrollable: true,
-            tabs: const [
+            tabs: [
               Tab(text: 'Indian Market'),
               Tab(text: 'International'),
               Tab(text: 'Forex Futures'),
@@ -76,14 +80,7 @@ class _MarketWatchScreenState extends State<MarketWatchScreen> {
             ],
           ),
         ),
-        body: TabBarView(
-          children: [
-            const IndianMarketView(),
-            const Center(child: Text('International')),
-            const Center(child: Text('Forex Futures')),
-            const Center(child: Text('Crypto Futures')),
-          ],
-        ),
+        body: const IndianMarketView(),
         floatingActionButton: const CenterDockedFAB(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: const CustomBottomNavBar(),
@@ -110,27 +107,136 @@ class IndianMarketView extends StatelessWidget {
             ],
           ),
           Expanded(
-            child: TabBarView(
-              children: [
+            child:
                 BlocBuilder<MarketWatchBloc, MarketWatchState>(
                   builder: (context, state) {
                     return state.when(
                       initial: () => const Center(child: Text('Initializing...')),
                       loading: () => const Center(child: CircularProgressIndicator()),
                       loaded: (marketData) =>
-                          MarketDataTable(marketData: marketData),
+                          MarketList(marketData: marketData),
                       error: (message) => Center(child: Text('Error: $message')),
                     );
                   },
-                ),
-                const Center(child: Text('NSE Option')),
-                const Center(child: Text('MCX Futures')),
-                const Center(child: Text('MCX Option')),
-              ],
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class MarketList extends StatelessWidget {
+  final List<MarketDataModel> marketData;
+
+  const MarketList({super.key, required this.marketData});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: marketData.length,
+      physics: const AlwaysScrollableScrollPhysics(),
+      itemBuilder: (context, index) {
+        final data = marketData[index];
+        final theme = Theme.of(context);
+        final priceColor = data.isPositiveChange ? Colors.green : Colors.red;
+
+        return Card(
+          elevation: 2,
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: priceColor.withOpacity(0.1),
+                      child: Text(data.symbol[0], style: TextStyle(color: priceColor, fontWeight: FontWeight.bold)),
+                    ),
+                    const SizedBox(width: 12),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(data.symbol, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 4),
+                        const Text('31-07-2025', style: TextStyle(color: Colors.grey, fontSize: 12)),
+                      ],
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          data.isPositiveChange ? Icons.arrow_upward : Icons.arrow_downward,
+                          color: priceColor,
+                          size: 16,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(
+                          '${data.change.toStringAsFixed(2)}%',
+                          style: TextStyle(color: priceColor, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    TextButton.icon(
+                      onPressed: (){},
+                      icon: const Icon(Icons.bar_chart, color: Colors.grey),
+                      label: const Text('Chart', style: TextStyle(color: Colors.grey)),
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                        minimumSize: Size.zero,
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      ),
+                    )
+                  ],
+                ),
+                Row(
+                  children: [
+                    OutlinedButton(
+                      onPressed: () {
+                        print('SELL: ${data.symbol}');
+                      },
+                      style: OutlinedButton.styleFrom(
+                        side: BorderSide(color: Colors.red.shade300),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                      ),
+                      child: Column(
+                        children: [
+                          Text('Sell', style: TextStyle(color: Colors.red.shade700, fontSize: 12)),
+                          Text('3426.03', style: TextStyle(color: Colors.red.shade700, fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    ElevatedButton(
+                      onPressed: () {
+                        print('BUY: ${data.symbol}');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green.shade600,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                      ),
+                      child: Column(
+                        children: const [
+                          Text('Buy', style: TextStyle(color: Colors.white, fontSize: 12)),
+                          Text('3428.03', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
