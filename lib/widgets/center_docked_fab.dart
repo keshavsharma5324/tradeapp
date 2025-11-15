@@ -12,7 +12,11 @@ class CenterDockedFAB extends StatelessWidget {
       decoration: const BoxDecoration(
           shape: BoxShape.circle,
           gradient: LinearGradient(
-            colors: [Color(0xFFC33764), Color(0xFF1D2671)],
+            colors: [
+              Color(0xFF436EDD),
+              Color(0xFFAF7CE3),
+              Color(0xFFAF69C7),
+            ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -22,7 +26,6 @@ class CenterDockedFAB extends StatelessWidget {
                 blurRadius: 10,
                 offset: Offset(0, 5))
           ]),
-      child: const Icon(Icons.add, size: 35, color: Colors.white),
     );
   }
 }
