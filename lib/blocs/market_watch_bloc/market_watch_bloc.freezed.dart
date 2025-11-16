@@ -55,12 +55,13 @@ extension MarketWatchEventPatterns on MarketWatchEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _LoadMarketData value)?  loadMarketData,TResult Function( _UpdateMarketData value)?  updateMarketData,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _LoadMarketData value)?  loadMarketData,TResult Function( _UpdateMarketData value)?  updateMarketData,TResult Function( _ShuffleMarketData value)?  shuffleMarketData,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _LoadMarketData() when loadMarketData != null:
 return loadMarketData(_that);case _UpdateMarketData() when updateMarketData != null:
-return updateMarketData(_that);case _:
+return updateMarketData(_that);case _ShuffleMarketData() when shuffleMarketData != null:
+return shuffleMarketData(_that);case _:
   return orElse();
 
 }
@@ -78,12 +79,13 @@ return updateMarketData(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _LoadMarketData value)  loadMarketData,required TResult Function( _UpdateMarketData value)  updateMarketData,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _LoadMarketData value)  loadMarketData,required TResult Function( _UpdateMarketData value)  updateMarketData,required TResult Function( _ShuffleMarketData value)  shuffleMarketData,}){
 final _that = this;
 switch (_that) {
 case _LoadMarketData():
 return loadMarketData(_that);case _UpdateMarketData():
-return updateMarketData(_that);case _:
+return updateMarketData(_that);case _ShuffleMarketData():
+return shuffleMarketData(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -100,12 +102,13 @@ return updateMarketData(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _LoadMarketData value)?  loadMarketData,TResult? Function( _UpdateMarketData value)?  updateMarketData,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _LoadMarketData value)?  loadMarketData,TResult? Function( _UpdateMarketData value)?  updateMarketData,TResult? Function( _ShuffleMarketData value)?  shuffleMarketData,}){
 final _that = this;
 switch (_that) {
 case _LoadMarketData() when loadMarketData != null:
 return loadMarketData(_that);case _UpdateMarketData() when updateMarketData != null:
-return updateMarketData(_that);case _:
+return updateMarketData(_that);case _ShuffleMarketData() when shuffleMarketData != null:
+return shuffleMarketData(_that);case _:
   return null;
 
 }
@@ -122,11 +125,12 @@ return updateMarketData(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  loadMarketData,TResult Function( List<MarketDataModel> marketData)?  updateMarketData,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  loadMarketData,TResult Function( List<MarketDataModel> marketData)?  updateMarketData,TResult Function()?  shuffleMarketData,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LoadMarketData() when loadMarketData != null:
 return loadMarketData();case _UpdateMarketData() when updateMarketData != null:
-return updateMarketData(_that.marketData);case _:
+return updateMarketData(_that.marketData);case _ShuffleMarketData() when shuffleMarketData != null:
+return shuffleMarketData();case _:
   return orElse();
 
 }
@@ -144,11 +148,12 @@ return updateMarketData(_that.marketData);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  loadMarketData,required TResult Function( List<MarketDataModel> marketData)  updateMarketData,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  loadMarketData,required TResult Function( List<MarketDataModel> marketData)  updateMarketData,required TResult Function()  shuffleMarketData,}) {final _that = this;
 switch (_that) {
 case _LoadMarketData():
 return loadMarketData();case _UpdateMarketData():
-return updateMarketData(_that.marketData);case _:
+return updateMarketData(_that.marketData);case _ShuffleMarketData():
+return shuffleMarketData();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -165,11 +170,12 @@ return updateMarketData(_that.marketData);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  loadMarketData,TResult? Function( List<MarketDataModel> marketData)?  updateMarketData,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  loadMarketData,TResult? Function( List<MarketDataModel> marketData)?  updateMarketData,TResult? Function()?  shuffleMarketData,}) {final _that = this;
 switch (_that) {
 case _LoadMarketData() when loadMarketData != null:
 return loadMarketData();case _UpdateMarketData() when updateMarketData != null:
-return updateMarketData(_that.marketData);case _:
+return updateMarketData(_that.marketData);case _ShuffleMarketData() when shuffleMarketData != null:
+return shuffleMarketData();case _:
   return null;
 
 }
@@ -280,6 +286,38 @@ as List<MarketDataModel>,
 
 
 }
+
+/// @nodoc
+
+
+class _ShuffleMarketData implements MarketWatchEvent {
+  const _ShuffleMarketData();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShuffleMarketData);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'MarketWatchEvent.shuffleMarketData()';
+}
+
+
+}
+
+
+
 
 /// @nodoc
 mixin _$MarketWatchState {

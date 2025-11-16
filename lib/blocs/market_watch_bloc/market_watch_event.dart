@@ -5,4 +5,5 @@ class MarketWatchEvent with _$MarketWatchEvent {
   const factory MarketWatchEvent.loadMarketData() = _LoadMarketData;
   const factory MarketWatchEvent.updateMarketData(
       List<MarketDataModel> marketData) = _UpdateMarketData;
+  const factory MarketWatchEvent.shuffleMarketData() = _ShuffleMarketData;
 }

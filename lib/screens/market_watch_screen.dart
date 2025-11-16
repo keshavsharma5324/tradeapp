@@ -135,6 +135,11 @@ class IndianMarketView extends StatelessWidget {
             Container(
               color: Colors.grey[200],
               child: TabBar(
+                onTap: (index) {
+                  context
+                      .read<MarketWatchBloc>()
+                      .add(const MarketWatchEvent.shuffleMarketData());
+                },
                 labelColor: Colors.white,
                 unselectedLabelColor: Colors.black87,
                 indicator: BoxDecoration(
@@ -177,17 +182,15 @@ class IndianMarketView extends StatelessWidget {
               ),
             ),
             Expanded(
-              child:
-                  BlocBuilder<MarketWatchBloc, MarketWatchState>(
-                    builder: (context, state) {
-                      return state.when(
-                        initial: () => const Center(child: Text('Initializing...')),
-                        loading: () => const Center(child: CircularProgressIndicator()),
-                        loaded: (marketData) =>
-                            MarketList(marketData: marketData),
-                        error: (message) => Center(child: Text('Error: $message')),
-                      );
-                    },
+              child: BlocBuilder<MarketWatchBloc, MarketWatchState>(
+                builder: (context, state) {
+                  return state.when(
+                    initial: () => const Center(child: Text('Initializing...')),
+                    loading: () => const Center(child: CircularProgressIndicator()),
+                    loaded: (marketData) => MarketList(marketData: marketData),
+                    error: (message) => Center(child: Text('Error: $message')),
+                  );
+                },
               ),
             ),
           ],
@@ -226,15 +229,18 @@ class MarketList extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       backgroundColor: priceColor.withOpacity(0.1),
-                      child: Text(data.symbol[0], style: TextStyle(color: priceColor, fontWeight: FontWeight.bold)),
+                      child: Text(data.symbol[0],
+                          style: TextStyle(color: priceColor, fontWeight: FontWeight.bold)),
                     ),
                     const SizedBox(width: 12),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(data.symbol, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+                        Text(data.symbol,
+                            style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
                         const SizedBox(height: 4),
-                        const Text('31-07-2025', style: TextStyle(color: Colors.grey, fontSize: 12)),
+                        const Text('31-07-2025',
+                            style: TextStyle(color: Colors.grey, fontSize: 12)),
                       ],
                     ),
                   ],
@@ -258,7 +264,7 @@ class MarketList extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     TextButton.icon(
-                      onPressed: (){},
+                      onPressed: () {},
                       icon: const Icon(Icons.bar_chart, color: Colors.grey),
                       label: const Text('Chart', style: TextStyle(color: Colors.grey)),
                       style: TextButton.styleFrom(
@@ -282,7 +288,8 @@ class MarketList extends StatelessWidget {
                       child: Column(
                         children: [
                           Text('Sell', style: TextStyle(color: Colors.red.shade700, fontSize: 12)),
-                          Text('3426.03', style: TextStyle(color: Colors.red.shade700, fontWeight: FontWeight.bold)),
+                          Text('3426.03',
+                              style: TextStyle(color: Colors.red.shade700, fontWeight: FontWeight.bold)),
                         ],
                       ),
                     ),
@@ -309,46 +316,6 @@ class MarketList extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class MarketDataTable extends StatelessWidget {
-  final List<MarketDataModel> marketData;
-
-  const MarketDataTable({super.key, required this.marketData});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return DataTable(
-      columns: const [
-        DataColumn(label: Text('Symbol')),
-        DataColumn(label: Text('Price')),
-        DataColumn(label: Text('Change')),
-      ],
-      rows: marketData.map((data) {
-        final priceColor = data.isPositiveChange ? Colors.green : Colors.red;
-
-        return DataRow(
-          cells: [
-            DataCell(Text(data.symbol, style: theme.textTheme.bodyMedium)),
-            DataCell(
-              Text(
-                data.price.toStringAsFixed(2),
-                style: theme.textTheme.bodyMedium?.copyWith(color: priceColor),
-              ),
-            ),
-            DataCell(
-              Text(
-                data.change.toStringAsFixed(2),
-                style: theme.textTheme.bodyMedium?.copyWith(color: priceColor),
-              ),
-            ),
-          ],
-        );
-      }).toList(),
     );
   }
 }

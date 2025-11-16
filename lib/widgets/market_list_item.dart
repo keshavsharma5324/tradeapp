@@ -19,7 +19,7 @@ class MarketListItem extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+                  Text(
               data.symbol,
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
@@ -34,17 +34,17 @@ class MarketListItem extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 4),
-                Text(
+                    Text(
                   '${data.change.toStringAsFixed(2)}%',
-                  style: TextStyle(
-                    color: color,
-                    fontWeight: FontWeight.bold,
-                  ),
+                      style: TextStyle(
+                        color: color,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
       ),
     );
   }
