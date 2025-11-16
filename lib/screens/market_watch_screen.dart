@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tradewatch/blocs/market_watch_bloc/market_watch_bloc.dart';
-import 'package:tradewatch/models/market_data_model.dart';
 import 'package:tradewatch/widgets/bottom_nav_bar.dart';
 import 'package:tradewatch/widgets/center_docked_fab.dart';
-import 'package:tradewatch/widgets/market_list_item.dart';
+import 'package:tradewatch/widgets/market_list.dart';
 
 class MarketWatchScreen extends StatefulWidget {
   const MarketWatchScreen({super.key});
@@ -207,23 +206,3 @@ class IndianMarketView extends StatelessWidget {
   }
 }
 
-class MarketList extends StatelessWidget {
-  final List<MarketDataModel> marketData;
-
-  const MarketList({super.key, required this.marketData});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: marketData.length,
-      physics: const AlwaysScrollableScrollPhysics(),
-      itemBuilder: (context, index) {
-        final data = marketData[index];
-        final theme = Theme.of(context);
-        final priceColor = data.isPositiveChange ? Colors.green : Colors.red;
-
-        return MarketListItem(priceColor: priceColor, data: data, theme: theme);
-      },
-    );
-  }
-}
