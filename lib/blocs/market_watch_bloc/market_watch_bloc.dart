@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -25,6 +26,7 @@ class MarketWatchBloc extends Bloc<MarketWatchEvent, MarketWatchState> {
     on<_UpdateMarketData>(((event, emit) {
       emit(MarketWatchState.loaded(event.marketData));
     }));
+    on<_ShuffleMarketData>(_onShuffleMarketData);
   }
 
   void _onLoadMarketData(
@@ -41,6 +43,19 @@ class MarketWatchBloc extends Bloc<MarketWatchEvent, MarketWatchState> {
         emit(MarketWatchState.error(error.toString()));
       },
     );
+  }
+
+  void _onShuffleMarketData(
+    _ShuffleMarketData event,
+    Emitter<MarketWatchState> emit,
+  ) {
+    final currentState = state;
+    if (currentState is _Loaded) {
+      final List<MarketDataModel> shuffledList =
+          List.from(currentState.marketData);
+      shuffledList.shuffle(Random());
+      emit(MarketWatchState.loaded(shuffledList));
+    }
   }
 
   @override

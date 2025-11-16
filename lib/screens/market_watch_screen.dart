@@ -136,6 +136,11 @@ class IndianMarketView extends StatelessWidget {
             Container(
               color: Colors.grey[200],
               child: TabBar(
+                onTap: (index) {
+                  context
+                      .read<MarketWatchBloc>()
+                      .add(const MarketWatchEvent.shuffleMarketData());
+                },
                 labelColor: Colors.white,
                 unselectedLabelColor: Colors.black87,
                 indicator: BoxDecoration(
