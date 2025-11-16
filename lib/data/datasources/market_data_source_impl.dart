@@ -46,12 +46,17 @@ class MarketDataSourceImpl implements MarketDataSource {
 
   void _updatePrices() {
     _marketData = _marketData.map((data) {
+      final random = Random();
       final change = (_random.nextDouble() * 2 - 1) / 10; // smaller change
       final newPrice = data.price * (1 + change);
+      final newSellPrice = data.sellPrice * (1 + (random.nextDouble() * 2 - 1) * 0.01);
+      final newBuyPrice = data.buyPrice * (1 + (random.nextDouble() * 2 - 1) * 0.01);
       return data.copyWith(
-        price: newPrice,
-        change: change * 100,
-        isPositiveChange: change >= 0,
+          price: newPrice,
+          change: change * 100,
+          isPositiveChange: change >= 0,
+          sellPrice: newSellPrice,
+          buyPrice: newBuyPrice
       );
     }).toList();
   }

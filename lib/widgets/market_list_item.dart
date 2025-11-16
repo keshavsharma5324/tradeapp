@@ -125,7 +125,7 @@ class MarketListItem extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '3426.03',
+                          data.sellPrice.toStringAsFixed(2),
                           style: TextStyle(
                             color: Colors.red.shade700,
                             fontWeight: FontWeight.bold,
@@ -147,15 +147,15 @@ class MarketListItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: const Column(
+                    child: Column(
                       children: [
-                        Text(
+                        const Text(
                           'Buy',
                           style: TextStyle(color: Colors.white, fontSize: 12),
                         ),
                         Text(
-                          '3428.03',
-                          style: TextStyle(
+                          data.buyPrice.toStringAsFixed(2),
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
