@@ -6,23 +6,11 @@ class CustomBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      color: const Color(0xFF5B4ECF),
       shape: const CircularNotchedRectangle(),
       notchMargin: 8.0,
-      color: Colors.transparent, // Set to transparent to show the gradient
-      elevation: 0, // No shadow for a cleaner look
-      child: Container(
-        height: 60,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFF436EDD),
-              Color(0xFFAF7CE3),
-            ],
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-          ),
-        ),
-        child: IconTheme(
+      elevation: 10,
+      child:  IconTheme(
           data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -52,7 +40,7 @@ class CustomBottomNavBar extends StatelessWidget {
             ],
           ),
         ),
-      ),
+      //),
     );
   }
 
