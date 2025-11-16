@@ -8,9 +8,20 @@ class CustomBottomNavBar extends StatelessWidget {
     return BottomAppBar(
       shape: const CircularNotchedRectangle(),
       notchMargin: 8.0,
-      color: const Color(0xFF083876),
-      child: SizedBox(
+      color: Colors.transparent, // Set to transparent to show the gradient
+      elevation: 0, // No shadow for a cleaner look
+      child: Container(
         height: 60,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFF436EDD),
+              Color(0xFFAF7CE3),
+            ],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          ),
+        ),
         child: IconTheme(
           data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
           child: Row(

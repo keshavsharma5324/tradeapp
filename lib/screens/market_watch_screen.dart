@@ -213,7 +213,8 @@ class MarketList extends StatelessWidget {
         final priceColor = data.isPositiveChange ? Colors.green : Colors.red;
 
         return Card(
-          elevation: 2,
+          elevation: 0,
+          color: Colors.grey[200],
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: Padding(
