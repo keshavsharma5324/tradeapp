@@ -18,8 +18,8 @@ class _MarketWatchScreenState extends State<MarketWatchScreen> {
   void initState() {
     super.initState();
     context.read<MarketWatchBloc>().add(
-          const MarketWatchEvent.loadMarketData(),
-        );
+      const MarketWatchEvent.loadMarketData(),
+    );
   }
 
   @override
@@ -43,7 +43,7 @@ class _MarketWatchScreenState extends State<MarketWatchScreen> {
               margin: const EdgeInsets.symmetric(vertical: 8),
               padding: const EdgeInsets.symmetric(horizontal: 12),
               decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: .2),
+                color: Colors.white.withAlpha(51),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: const Row(
@@ -88,9 +88,12 @@ class _MarketWatchScreenState extends State<MarketWatchScreen> {
             ),
           ),
           bottom: TabBar(
+            isScrollable: true,
+            labelPadding: const EdgeInsets.symmetric(horizontal: 20.0),
             labelColor: Colors.white,
             unselectedLabelColor: Colors.white70,
             indicatorColor: Colors.white,
+            tabAlignment: TabAlignment.start,
             tabs: [
               Tab(
                 icon: Image.asset('assets/images/indian_market.png', width: 24, height: 24),
@@ -134,13 +137,16 @@ class IndianMarketView extends StatelessWidget {
             Container(
               color: Colors.grey[200],
               child: TabBar(
+                isScrollable: true,
                 onTap: (index) {
                   context
                       .read<MarketWatchBloc>()
                       .add(const MarketWatchEvent.shuffleMarketData());
                 },
                 labelColor: Colors.white,
+                tabAlignment: TabAlignment.start,
                 unselectedLabelColor: Colors.black87,
+                labelPadding: const EdgeInsets.symmetric(horizontal: 20.0),
                 indicator: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   gradient: const LinearGradient(
@@ -182,16 +188,16 @@ class IndianMarketView extends StatelessWidget {
             ),
             Expanded(
               child:
-                  BlocBuilder<MarketWatchBloc, MarketWatchState>(
-                    builder: (context, state) {
-                      return state.when(
-                        initial: () => const Center(child: Text('Initializing...')),
-                        loading: () => const Center(child: CircularProgressIndicator()),
-                        loaded: (marketData) =>
-                            MarketList(marketData: marketData),
-                        error: (message) => Center(child: Text('Error: $message')),
-                      );
-                    },
+              BlocBuilder<MarketWatchBloc, MarketWatchState>(
+                builder: (context, state) {
+                  return state.when(
+                    initial: () => const Center(child: Text('Initializing...')),
+                    loading: () => const Center(child: CircularProgressIndicator()),
+                    loaded: (marketData) =>
+                        MarketList(marketData: marketData),
+                    error: (message) => Center(child: Text('Error: $message')),
+                  );
+                },
               ),
             ),
           ],
@@ -221,4 +227,3 @@ class MarketList extends StatelessWidget {
     );
   }
 }
-
