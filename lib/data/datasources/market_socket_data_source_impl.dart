@@ -39,6 +39,8 @@ class MarketSocketDataSourceImpl implements MarketSocketDataSource {
           final change = (random.nextDouble() * 2 - 1) * 0.01;
           final newPrice = item.price * (1 + change);
           final isPositive = newPrice >= item.price;
+          final newSellPrice = item.sellPrice * (1 + (random.nextDouble() * 2 - 1) * 0.01);
+          final newBuyPrice = item.buyPrice * (1 + (random.nextDouble() * 2 - 1) * 0.01);
 
           return item.copyWith(
             price: newPrice,
@@ -46,6 +48,8 @@ class MarketSocketDataSourceImpl implements MarketSocketDataSource {
             pl: newPrice - item.price,
             change: (newPrice - item.price) / item.price * 100,
             isPositiveChange: isPositive,
+            sellPrice: newSellPrice,
+            buyPrice: newBuyPrice,
           );
         }).toList();
         _controller.add(_marketData);
