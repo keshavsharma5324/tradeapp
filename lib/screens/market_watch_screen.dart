@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tradewatch/blocs/market_watch_bloc/market_watch_bloc.dart';
 import 'package:tradewatch/models/market_data_model.dart';
 import 'package:tradewatch/widgets/bottom_nav_bar.dart';
@@ -44,7 +43,7 @@ class _MarketWatchScreenState extends State<MarketWatchScreen> {
               margin: const EdgeInsets.symmetric(vertical: 8),
               padding: const EdgeInsets.symmetric(horizontal: 12),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
+                color: Colors.white.withValues(alpha: .2),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: const Row(
@@ -89,7 +88,6 @@ class _MarketWatchScreenState extends State<MarketWatchScreen> {
             ),
           ),
           bottom: TabBar(
-            isScrollable: true,
             labelColor: Colors.white,
             unselectedLabelColor: Colors.white70,
             indicatorColor: Colors.white,
