@@ -95,19 +95,19 @@ class _MarketWatchScreenState extends State<MarketWatchScreen> {
             indicatorColor: Colors.white,
             tabs: [
               Tab(
-                icon: SvgPicture.asset('assets/images/indian_market.svg', width: 24, height: 24),
+                icon: Image.asset('assets/images/indian_market.png', width: 24, height: 24),
                 text: 'Indian Market',
               ),
               Tab(
-                icon: SvgPicture.asset('assets/images/international.svg', width: 24, height: 24),
+                icon: Image.asset('assets/images/international.png', width: 24, height: 24),
                 text: 'International',
               ),
               Tab(
-                icon: SvgPicture.asset('assets/images/forex_futures.svg', width: 24, height: 24),
+                icon: Image.asset('assets/images/forex_futures.png', width: 24, height: 24),
                 text: 'Forex Futures',
               ),
               Tab(
-                icon: SvgPicture.asset('assets/images/crypto_futures.svg', width: 24, height: 24),
+                icon: Image.asset('assets/images/crypto_futures.png', width: 24, height: 24),
                 text: 'Crypto Futures',
               ),
             ],
