@@ -11,6 +11,8 @@ abstract class MarketDataModel with _$MarketDataModel {
     required bool isPositiveChange,
     required double ltp,
     required double pl,
+    required double buyPrice,
+    required double sellPrice,
   }) = _MarketDataModel;
 
   factory MarketDataModel.fromJson(Map<String, dynamic> json) {
@@ -22,6 +24,8 @@ abstract class MarketDataModel with _$MarketDataModel {
       isPositiveChange: json['isUp'] as bool,
       ltp: (json['sellPrice'] as num).toDouble(),
       pl: (json['change'] as num).toDouble(),
+      buyPrice: (json['buyPrice'] as num).toDouble(),
+      sellPrice: (json['sellPrice'] as num).toDouble(),
     );
   }
 }
